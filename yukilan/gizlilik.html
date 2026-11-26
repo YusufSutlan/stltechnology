@@ -9,7 +9,7 @@
   .draft { background:#ffebee; color:#b71c1c; border:1px solid #ef9a9a; border-radius:8px; padding:10px 14px; font-size:14px; }
 </style></head>
 <body><main><h1>Kişisel Verilerin Korunması Aydınlatma Metni ve Gizlilik Politikası</h1>
-<p class="meta">Uygulama: Yük İlanları · Sürüm: 2026-11-21</p>
+<p class="meta">Uygulama: Yük İlanları · Sürüm: 2026-11-26</p>
 
 <p>Bu metin, Yük İlanları mobil uygulamasında ("Uygulama") işlenen kişisel verilere ilişkin olarak 6698 sayılı
 Kişisel Verilerin Korunması Kanunu ("KVKK") m. 10 uyarınca sizi bilgilendirmek ve App Store / Google Play
@@ -22,6 +22,10 @@ Web: <a href="https://stltechnology.com.tr">https://stltechnology.com.tr</a></p>
 <h2>2. Hangi kişisel verileri işliyoruz?</h2>
 <ul>
   <li><b>Telefon numaranız:</b> giriş, hesap ve doğrulama için. Ad, e-posta, adres, kimlik numarası istemiyoruz.</li>
+  <li><b>Giriş doğrulama bilgileri:</b> giriş kodu Google Firebase Authentication ile gönderildiğinde telefon
+      numaranız, doğrulama ve son giriş zamanı ile isteğin gerçek bir cihazdaki Uygulamadan geldiğini doğrulamak için
+      kullanılan cihaz/uygulama doğrulama bilgileri (Android'de Google Play Integrity, iPhone'da Apple bildirim
+      servisi jetonu veya reCAPTCHA) ve IP adresi Google tarafından işlenir.</li>
   <li><b>Verdiğiniz ilanlar:</b> yükleme/teslim yerleri, araç tipi, tonaj, ücret, açıklama ve ilanda görünen telefon
       numarası. Bu bilgiler ilan olarak diğer kullanıcılara gösterilir.</li>
   <li><b>Kamuya açık kaynaklardan derlenen ilanlar:</b> herkese açık nakliye gruplarında ilan sahiplerinin kendilerinin
@@ -63,7 +67,14 @@ göstermez, reklam/izleme amaçlı veri toplamaz ve verilerinizi <b>satmaz</b>.<
 <p>Yalnızca hizmetin sunulması için gerekli olduğu ölçüde, veri işleyen sıfatıyla:</p>
 <ul>
   <li><b>Sunucu/barındırma hizmeti sağlayıcısı:</b> Oracle Cloud Infrastructure (Oracle), veri merkezi <b>Fransa (Marsilya, Avrupa Birliği)</b>. Uygulamanın tüm verileri (hesap, ilanlar, rotalar, defter ve güvenlik kayıtları) bu sunucuda saklanır,</li>
-  <li><b>SMS hizmet sağlayıcısı</b> (giriş kodunun gönderilmesi için telefon numaranız),</li>
+  <li><b>Giriş kodu (SMS) hizmet sağlayıcıları:</b> giriş kodu, kullandığınız Uygulama sürümüne ve hizmet
+      ayarlarımıza bağlı olarak aşağıdakilerden biriyle gönderilir:
+    <ul>
+      <li><b>Google Firebase Authentication</b> (Google LLC): telefon numaranız, SMS kodunun gönderilmesi ve
+          doğrulanması, kötüye kullanımın önlenmesi için cihaz/uygulama doğrulama bilgileri ve IP adresi.
+          Firebase'de numaranıza bağlı bir giriş kaydı oluşur,</li>
+      <li><b>İleti Merkezi</b> (Türkiye'deki SMS hizmet sağlayıcısı): giriş kodunun gönderilmesi için telefon numaranız,</li>
+    </ul></li>
   
   <li><b>Google Firebase Cloud Messaging</b> (anlık bildirimlerin cihazınıza iletilmesi; bildirim jetonu),</li>
   <li><b>Yapay zekâ metin işleme hizmeti (Google Gemini):</b> kamuya açık gruplardan derlenen bazı ilan metinlerinin
@@ -72,7 +83,8 @@ göstermez, reklam/izleme amaçlı veri toplamaz ve verilerinizi <b>satmaz</b>.<
   <li>Kanunen yetkili kamu kurum ve kuruluşları (talep halinde).</li>
 </ul>
 <h2>5a. Yurt dışına aktarım</h2>
-<p>Verileriniz yurt dışında işlenir: sunucumuz Fransa'dadır (Oracle), bildirim ve yapay zekâ hizmetleri
+<p>Verileriniz yurt dışında işlenir: sunucumuz Fransa'dadır (Oracle), giriş doğrulaması (Firebase Authentication),
+bildirim ve yapay zekâ hizmetleri
 (Google) yurt dışında bulunur. Bu aktarımlar KVKK m. 9'a uygun olarak, ilgili hizmet sağlayıcılarla imzalanan
 ve Kişisel Verileri Koruma Kurumuna bildirilen <b>standart sözleşmeler</b> başta olmak üzere Kanunda öngörülen uygun
 güvencelerden biri sağlanarak yapılır. Sunucuya giden tüm bağlantılar şifrelidir (HTTPS); sunucuya erişim yalnızca
@@ -88,6 +100,8 @@ telefon numarası giriş yapmamış kullanıcılara kısmen gizlenmiş olarak g�
       ilandaki telefon numarası en fazla 180 gün saklanır; sonra silinir. İlanın numarasız özeti (rota, araç, ücret)
       istatistik amacıyla anonim olarak tutulabilir.</li>
   <li>Bildirim jetonu: çıkış yaptığınızda, hesabınızı sildiğinizde veya jeton geçersizleştiğinde silinir.</li>
+  <li>Firebase Authentication giriş kaydı (telefon numarası, kayıt ve son giriş zamanı): hesabınızı silene kadar;
+      hesabınızı sildiğinizde silinir.</li>
   
   <li>Güvenlik kayıtları (IP, istek zamanı): en fazla 6 ay.</li>
 </ul>
@@ -100,8 +114,8 @@ kaldırabilir veya stlteknoloji.2026@gmail.com adresine yazabilirsiniz.</p>
 <h2>8. Hesap ve veri silme</h2>
 <p>Hesabınızı Uygulamada <b>Profil &gt; Hesabımı sil</b> ile dilediğiniz zaman silebilirsiniz. Uygulamaya
 erişemiyorsanız, kayıtlı telefon numaranızı yazarak stlteknoloji.2026@gmail.com adresinden silme talep edebilirsiniz.
-Silme ile hesabınız, rotalarınız, defter kayıtlarınız, bildirim jetonlarınız ve Uygulamadan verdiğiniz ilanlar
-silinir veya yayından kaldırılır. Ayrıntı: <a href="hesap-silme">Hesap ve veri silme</a>.</p>
+Silme ile hesabınız, Google Firebase Authentication'daki giriş kaydınız, rotalarınız, defter kayıtlarınız,
+bildirim jetonlarınız ve Uygulamadan verdiğiniz ilanlar silinir veya yayından kaldırılır. Ayrıntı: <a href="hesap-silme">Hesap ve veri silme</a>.</p>
 
 
 <h2>9. Haklarınız (KVKK m. 11)</h2>
